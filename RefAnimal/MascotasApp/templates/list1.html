@@ -1,0 +1,99 @@
+{% extends 'body.html' %}
+
+{% load static %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="card card-default">
+    <div class="card-header">
+    <h3 class="card-title">
+        <i class="fas fa-list"></i> Lista de mascotas
+    {{ title }}
+    </h3>
+    </div>
+    
+    <div class="card-body">
+    
+        <table class="table" id="data">
+            <thead>
+               
+                {% block columns %}
+
+                {% endblock %}
+
+          
+            </thead>
+
+
+            <tbody>
+
+                {% block rows %}
+
+                {% for c in mascotas %}
+                <tr>
+                    <td> {{c.id_mascota}}           </td>
+                    <td> {{c.nombre}                </td>
+                    <td> {{c.sexo}}                 </td>
+                    <td> {{c.edad}}                 </td>
+                    <td> {{c.fecha_rescate}}        </td>
+                    <td> {{c.fecha_actualizacion}}  </td>
+                    <td> {{c.enfermedad}}           </td>
+                    <td> {{c.foto}}                 </td>
+                    <td> {{c.foto2}}                </td>
+                    <td> {{c.foto3}}                </td>
+                    
+                    <td>
+                    <button class="btn btn-primary btn-flat"><i class="fas fa-pen"></i>editar</button>  
+                    <button class="btn btn-primary btn-flat"><i class="fas fa-trash"></i>eliminar</button>  
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+                {% endblock %}
+
+           
+              
+
+
+            </tbody>
+          </table>
+
+
+
+    </div>
+    </div>
+    <div class="card-footer"> 
+        <button class="btn btn-primary btn-flat">
+            
+            <a href="{% url 'MascotasApp:mascota_create'%}" class="btn btn-primary btn-flat"><i class="fas fa-plus"></i>Nueva mascota</a>  
+        </button>  
+    </div>
+    </div>
+{% endblock %}
+
+{% block javascript  %}
+
+<script type="application/javascript">
+
+$(document).ready(function() {
+    $('#data').DataTable({ 
+        responsive: true,
+        autoWidth: false
+
+     });
+} );
+
+</script>
+
+{% endblock %}

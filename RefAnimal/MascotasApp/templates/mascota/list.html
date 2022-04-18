@@ -1,0 +1,58 @@
+{% extends 'list1.html' %}
+
+{% block columns %}
+
+<tr>
+    <th scope="col">id_mascota</th>
+    <th scope="col">nombre</th>
+    <th scope="col">sexo</th>
+    <th scope="col">edad</th>
+    <th scope="col">fecha_rescate</th>
+    <th scope="col">fecha_actualizacion</th>
+    <th scope="col">enfermedad</th>
+    <th scope="col">foto</th>
+    <th scope="col">foto2</th>
+    <th scope="col">foto3</th>
+    
+    <th scope="col">opciones</th>
+  </tr>
+
+{% endblock %}
+
+
+{% block rows %}
+{% for c in object_list %}
+<tr>
+   <td> {{c.id_mascota }}          </td>
+   <td> {{c.nombre}}              </td>
+   <td> {{c.sexo}}                 </td>
+   <td> {{c.edad}}                 </td>
+   <td> {{c.fecha_rescate}}        </td>
+   <td> {{c.fecha_actualizacion}}  </td>
+   <td> {{c.enfermedad}}          </td>
+   <td class="text-center">
+   <img src="{{ c.get_photo_url }}" class="img-fluid d-block mx-auto" style="width: 100px; height: 100px;">
+   </td> 
+   
+   <td class="text-center">
+   <img src="{{ c.get_photo2_url }}" class="img-fluid d-block mx-auto" style="width: 100px; height: 100px;">
+   </td> 
+   <td class="text-center">
+    <img src="{{ c.get_photo3_url }}" class="img-fluid d-block mx-auto" style="width: 100px; height: 100px;">
+    </td> 
+   
+   
+   <td>
+   <a href="{% url 'MascotasApp:mascota_update' c.id %}" class="btn btn-primary btn-flat"><i class="fas fa-pen"></i>editar</a>  
+   <a href="{% url 'MascotasApp:mascota_delete' c.id %}" class="btn btn-primary btn-flat"><i class="fas fa-trash"></i>eliminar</a>  
+   </td>
+
+</tr>
+
+
+{% endfor %}
+{% endblock %}
+
+
+
+

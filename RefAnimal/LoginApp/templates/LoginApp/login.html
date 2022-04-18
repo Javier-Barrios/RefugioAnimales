@@ -1,0 +1,109 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Log in</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'LoginApp/css/all.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'LoginApp/css/adminlte.min.css' %}">
+
+  <script scr="{% static 'lib/sweetalert2-9.10.0/sweetalert2.all.min.js' %}"></script>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+
+</head>
+<nav id="navigation">
+  <!-- container -->
+  <div class="container">
+    <div id="responsive-nav">
+    </div>
+  </div>
+</nav>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="{% url 'Index' %}"><b>Mi nuevo </b>mejor Amigo</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      
+      <div class="contenedor-formulario">
+        <div class="formulario-ingreso">
+          <form action="." method="POST">
+            {% csrf_token %}
+            <div class="imagen-usuario">
+              <img src="{% static 'LoginApp/img/avataar.png' %}"   alt="AVATAR">
+            </div>
+            <div class="section-title text-center">
+              <h3 class="title">Iniciar Sesión</h3>
+            </div>
+            <span class="titulo-ingreso">
+              Ingreso de Usuario
+            </span>
+  
+            <div class="campo-texto" data-validate = "Usuario requerido">
+              {{ form.username | add_class:'form-control' | attr:'autocomplete:off' | attr:'placeholder:Ingrese su usuario'}}
+              <span></span>
+            </div>
+  
+            <div class="campo-texto" data-validate = "Contraseña requerida">
+              {{ form.password|add_class:'form-control'| attr:'autocomplete:off' | attr:'placeholder:Ingrese su contraseña'}}
+               <span> </span>
+            </div>
+  
+            <div>
+              <button class="boton-ingresar">
+                Ingresar
+              </button>
+            </div>
+  
+            <div class="crear-cuenta">
+              <a href="/detect/">
+              <p class="text-info">Utiliza tus datos biometricos</p>
+                
+              </a>
+            </div>
+  
+            <div class="crear-cuenta">
+              <a href="">
+              <p class="text-info">¿Aún no tienes una cuenta? | Crear una cuenta</p>
+              </a>
+            </div>
+        </div>
+      </div>
+  
+      </form>
+
+      <div class="social-auth-links text-center mb-3">
+            
+      </div>
+      <!-- /.social-auth-links -->
+
+      <p class="mb-1">
+        <a href="forgot-password.html">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{% static 'LoginApp/lib/AdminLTE/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'LoginApp/lib/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'LoginApp/lib/AdminLTE/js/adminlte.min.js' %}"></script>
+</body>
+</html>

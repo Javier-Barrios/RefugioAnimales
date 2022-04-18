@@ -1,0 +1,50 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+
+<tr>
+    <th scope="col">nombre</th>
+    <th scope="col">email</th>
+    <th scope="col">numero</th>
+    <th scope="col">dpi</th>
+    <th scope="col">fecha_registro</th>
+    <th scope="col">fecha_creacion</th>
+    <th scope="col">fecha_actualizacion</th>
+    <th scope="col">edad</th>
+    <th scope="col">salario</th>
+    <th scope="col">foto</th>
+    <th scope="col">opciones</th>
+  </tr>
+
+{% endblock %}
+
+
+{% block rows %}
+{% for c in object_list %}
+<tr>
+    <td> {{c.nombre}}  </td>
+    <td> {{c.email}}   </td>
+    <td> {{c.numero}}  </td>
+    <td> {{c.dpi}}                  </td>
+    <td> {{c.fecha_registro}}       </td>
+    <td> {{c.fecha_creacion}}       </td>
+    <td> {{c.fecha_actualizacion}}  </td>
+    <td> {{c.edad}}                 </td>
+    <td> {{c.salario}}              </td>
+    <td class="text-center">
+    <img src="{{ c.get_photo_url }}" class="img-fluid d-block mx-auto" style="width: 250px; height: 250px;">
+    </td> 
+    <td>
+    <a href="{% url 'refugioapp:empleado_update'%}" class="btn btn-primary btn-flat"><i class="fas fa-pen"></i>editar</a>  
+    <button class="btn btn-primary btn-flat"><i class="fas fa-trash"></i>eliminar</button>  
+    </td>
+
+</tr>
+
+
+{% endfor %}
+{% endblock %}
+
+
+
+
