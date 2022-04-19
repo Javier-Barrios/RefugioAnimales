@@ -3,17 +3,18 @@ from django.urls import path
 from LoginApp import views
 
 from MascotasApp.views import mascotaListView
+from LoginApp.views import masinfo
 
 urlpatterns = [
-    path('',views.home, name='Home'),
+    
  
 
 
 
-    path('index',views.index, name='Index'),
+    path('',views.index, name='Index'),
     path('masinfo',views.masinfo, name='masinfo'),
     path('mascota/list/', mascotaListView.as_view(), name='mascota_list'),
-    
+    path('<slug:nombre>/animal/<int:id>', masinfo),
 
 
 ]

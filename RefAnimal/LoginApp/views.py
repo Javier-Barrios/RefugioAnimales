@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from matplotlib.style import context
 
 from UsuariosApp.models import Usuario
-from MascotasApp.models import mascota
+from MascotasApp.models import *
 # Create your views here.
 
 class LoginFormView(LoginView):
@@ -31,15 +31,26 @@ def home(request):
 
 def index(request):
 
-    return render(request, "LoginApp/index.html")
-
-def masinfo(request):
     mascotas= mascota.objects.all()
     informacion=Usuario.objects.all()
     context={'informacion': informacion, 'mascota':mascotas}
+       
+    return render(request, 'LoginApp/index.html', context)
 
-    return render(request, "LoginApp/masinfo.html", context)
+#def masinfo(request):
+ #   mascotas= mascota.objects.all()
+  #  informacion=Usuario.objects.all()
+  #  tipo = Type2.objects.all()
+   # context={'informacion': informacion, 'mascotas':mascotas, 'tipo': tipo}
+   # return render(request, "LoginApp/masinfo.html", context)
 
+
+def masinfo(request, id, nombre):
+    mascotas= mascota.objects.all()
+    animal = mascota.objects.get(id=id)
+    name = mascota.objects.get(nombre = nombre)
+    context = {'animal': animal,'name':name, 'mascotas':mascotas}
+    return render (request, "LoginApp/masinfo.html", context)
 
 
 #def details(request, id, Type2_id):

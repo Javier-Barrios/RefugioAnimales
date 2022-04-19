@@ -63,13 +63,17 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Quienes somos</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resumen</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Adopta</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+          <li><a href="{% url 'account' %} " class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+
+
+
+          {% if user.is_authenticated%}
           <li><a href="{% url 'Index' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+          
+         {% endif %} 
+
+
+
           
         </ul>
       </nav><!-- .nav-menu -->
@@ -103,8 +107,8 @@
             <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center">
 
-                {% for pet in mascota %}
-                {% if pet.id == pet.id %}
+                {% for pet in mascotas %}
+                {% if pet.nombre == animal.nombre %}
 
                 
                 <div class="swiper-slide">
@@ -118,8 +122,7 @@
                 <div class="swiper-slide">
                 <td> <img src="{{ pet.get_photo3_url }}"  width="400" height="400" class="img-responsive thumbnail " alt="img"> </td>			
                 </div>
-                {% endif %}
-                {% endfor %}
+               
 
               </div>
               <div class="swiper-pagination"></div>
@@ -130,16 +133,26 @@
             <div class="portfolio-info">
               <h3>Información</h3>
               <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+                <li><strong>Nombre</strong>: {{ pet.nombre }}</li>
+                <li><strong>Edad</strong>: {{ pet.edad }} años</li>
+                <li><strong>Sexo</strong>: {{ pet.sexo }}</li>
+                <li><strong>Enfermedades</strong>:  {{ pet.enfermedad }}</li>
+
+
+                {% if user.is_authenticated%}
+                <a href="{% url 'Index' %}"><button type="button" class="btn btn-info"><i class="fa-solid fa-house"></i>    ADOPTAR</button></a>
+								{% else %} 
+                <a href="{% url 'login' %}"><button type="button" class="btn btn-info"><i class="fa-solid fa-house"></i>    ADOPTAR</button></a>
+									{% endif %} 
+
+
+
               </ul>
             </div>
             <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
+              <h2>Descripción:</h2>
               <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                ---
               </p>
             </div>
           </div>
@@ -147,6 +160,8 @@
         </div>
 
       </div>
+      {% endif %}
+      {% endfor %}
     </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
