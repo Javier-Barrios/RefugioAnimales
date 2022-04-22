@@ -54,7 +54,7 @@
 
             <tr>
               <td> <img src="{{ info.get_photo_url }}"  width="150" height="150" class="img-responsive thumbnail " alt="img"> </td>		
-              <td><h1 style="color:rgb(255, 255, 255);"> Hola, {{info.first_name}} {{info.last_name}}</a></h1></td>									
+              <td><h1 style="color:rgb(255, 255, 255);"> Hola, {{info.first_name}} {{record.first_name}} {{info.last_name}} {{record.last_name}}</a></h1></td>									
             </tr>
         
             {% endif %}
@@ -63,14 +63,21 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
+          <!-- <li><a href="/biometrico/{{ user.id }}" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Mi perfil</span></a></li> -->
+
+
+
+          <li><a href="{% url 'perfil' %}" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Mi perfil</span></a></li>
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Quienes somos</span></a></li>
           <li><a href="#resume" class="nav-link scrollto"><i class="fa-solid fa-paw"></i> <span>¿Por qué adoptar?</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="fa-solid fa-cat"></i><span>Adopta</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+
           {% if user.is_staff%}
           <li><a href="{% url 'mascota_list' %}" class="nav-link scrollto"><i class="fa-solid fa-dog"></i> <span>Mascotas</span></a></li>
+          <li><a href="{% url 'usuarioslist' %}" class="nav-link scrollto"><i class="fa-solid fa-dog"></i> <span>Usuarios</span></a></li>
+          <li><a href="{% url 'adopcion_list' %}" class="nav-link scrollto"><i class="fa-solid fa-dog"></i> <span>Solicitudes</span></a></li>
           {% endif %}
 
           {% if user.is_superuser%}

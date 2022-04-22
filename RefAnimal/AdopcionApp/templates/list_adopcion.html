@@ -1,0 +1,96 @@
+{% extends 'body.html' %}
+
+{% load static %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="card card-default">
+    <div class="card-header">
+    <h3 class="card-title">
+        <i class="fas fa-list"></i> Lista de Solicitudes de Adopcion
+    {{ title }}
+    </h3>
+    </div>
+    
+    <div class="card-body">
+    
+        <table class="table" id="data">
+            <thead>
+               
+                {% block columns %}
+
+                {% endblock %}
+
+          
+            </thead>
+
+
+            <tbody>
+
+                {% block rows %}
+
+                {% for c in adopciones %}
+                <tr>
+                    <td> {{c.nombre}}               </td>
+                    <td> {{c.apellido}}             </td>
+                    <td> {{c.edad}}                 </td>
+                    <td> {{c.email}}                </td>
+                    <td> {{c.numero}}               </td>
+                    <td> {{c.domicilio}}            </td>
+                    <td> {{c.mascota}}    </td>
+                    <td> {{c.razon_para_adoptar}}    </td>
+                    <td>
+                    <button class="btn btn-primary btn-flat"><i class="fas fa-pen"></i>editar</button>  
+                    <button class="btn btn-primary btn-flat"><i class="fas fa-trash"></i>eliminar</button>  
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+                {% endblock %}
+
+           
+              
+
+
+            </tbody>
+          </table>
+
+
+
+    </div>
+    </div>
+    <div class="card-footer"> 
+        <button class="btn btn-primary btn-flat">
+            
+            <a href="{% url 'AdopcionApp:adopcion_create'%}" class="btn btn-primary btn-flat"><i class="fas fa-plus"></i>Nueva Solicitud de Adopcion</a>  
+        </button>   
+    </div>
+    </div>
+{% endblock %}
+
+{% block javascript  %}
+
+<script type="application/javascript">
+
+$(document).ready(function() {
+    $('#data').DataTable({ 
+        responsive: true,
+        autoWidth: false
+
+     });
+} );
+
+</script>
+
+{% endblock %}

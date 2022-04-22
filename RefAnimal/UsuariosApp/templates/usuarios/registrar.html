@@ -133,9 +133,16 @@
                             <input type="password" name="password" class="form-control" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?><]).{12,}">
                         </div>	
 
-						<button type="submit" class="btn btn-success">Registrar</button>
+					
+						<div>
+							<button type="submit" class="btn btn-success">Registrar</button>
+						</div>
 
-                        <div>
+
+                        <div>		
+							<script src='https://www.google.com/recaptcha/api.js'></script>
+							<div class="g-recaptcha" data-sitekey="6Lf_doMfAAAAAAubpTk1v9cVCvGT7bP5-sZYilaE"></div>
+						
                             {% for message in messages %}
                             <label>{{message}}</label>
                             {% endfor %}
@@ -155,7 +162,7 @@
                         </ul>
                     </p>
                     </form>
-					</form>
+				</form>
 					<div class="col-md-6">
                     <br>
 				</div>

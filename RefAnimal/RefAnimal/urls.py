@@ -23,6 +23,8 @@ from refugioapp.views.empleado.view import *
 from django.conf.urls.static import static
 from django.conf import settings
 from UsuariosApp.views import *
+from ReconocimientoApp.views import *
+from AdopcionApp.views import *
 
 
 urlpatterns = [
@@ -32,10 +34,18 @@ urlpatterns = [
     path('', include('LoginApp.urls')),    
     path('', include('MascotasApp.urls')),
     path('', include('refugioapp.urls')),
+    path('', include('AdopcionApp.urls')),
     #path('home/', include('EmpleadosApp.urls')),
     path("account/", account, name="account"),
+    path('adopcion/add/', adopcionCreateView.as_view(), name='adopcion_create'),
     path('registrar/', registroadmin, name='registrar'),
+    path('perfil/', perfil, name='perfil'),
     path('usuarioslist/', listadouser, name='usuarioslist'),
+    path('perfil/crear/', biometrico, name='biometrico'),
+    path('entrenador/', trainer, name='entrenador'),
+    path('detect/', detect),
+    path("detect/cuenta/<int:id>", deteccion, name="deteccion"),
+
     
 ]
 

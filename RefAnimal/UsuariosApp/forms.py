@@ -16,3 +16,15 @@ class EditarPerfilForm(UserChangeForm):
             'edad',
             'photo',
         )
+
+
+
+
+
+
+class CommentForm(forms.ModelForm):
+    text = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control', 'rows': '3'}),
+        required=True,
+        max_length=1000
+    )

@@ -45,6 +45,7 @@ class mascota(models.Model):
     foto2= models.ImageField(upload_to='fotomascota/%Y/%M/%D', null=True, blank=True)
     foto3= models.ImageField(upload_to='fotomascota/%Y/%M/%D', null=True, blank=True)
     #vacunas
+    descripcion = models.CharField(max_length=50000, unique=True, verbose_name='descripcion')
     enfermedad = models.CharField(max_length=150, verbose_name='enfermedad')
     
     

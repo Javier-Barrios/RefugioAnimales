@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-x(w%02n8n83vg8(svo*f(ljl0xsj6%ibh9z8$*o5^-0dvhdmv3'
 
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Lf_doMfAAAAALyFIx3eemewnyVj3mJCLDHf6goW'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -46,7 +48,9 @@ INSTALLED_APPS = [
     'UsuariosApp',
     
     'MascotasApp',
+    'AdopcionApp',
     'refugioapp',
+    'ReconocimientoApp',
     
     
 ]

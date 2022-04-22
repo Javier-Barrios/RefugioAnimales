@@ -23,6 +23,14 @@ def account(request):
     return render(request, 'LoginApp/account.html', context)
 
 
+def deteccion(request, id):
+    record = Usuario.objects.get(id=id)
+    context = {
+        'record' : record
+    }
+    return render(request, 'LoginApp/account1.html', context)
+
+
 
 def home(request):
 

@@ -140,7 +140,7 @@
 
 
                 {% if user.is_authenticated%}
-                <a href="{% url 'Index' %}"><button type="button" class="btn btn-info"><i class="fa-solid fa-house"></i>    ADOPTAR</button></a>
+                <a href="{% url 'adopcion_create' %}"><button type="button" class="btn btn-info"><i class="fa-solid fa-house"></i>    ADOPTAR</button></a>
 								{% else %} 
                 <a href="{% url 'login' %}"><button type="button" class="btn btn-info"><i class="fa-solid fa-house"></i>    ADOPTAR</button></a>
 									{% endif %} 
@@ -152,7 +152,7 @@
             <div class="portfolio-description">
               <h2>Descripción:</h2>
               <p>
-                ---
+                {{pet.descripcion}}
               </p>
             </div>
           </div>

@@ -9,7 +9,7 @@ class Usuario(AbstractUser):
     email = models.EmailField(max_length=254, default = "")
     edad = models.PositiveIntegerField(default=18)
     photo = models.ImageField(blank = True, null = True)
-    type = models.CharField(max_length=10, default="")
+    #type = models.CharField(max_length=10, default="")
 
     def __str__(self):
         return self.username
