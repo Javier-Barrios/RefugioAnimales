@@ -27,6 +27,9 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6Lf_doMfAAAAALyFIx3eemewnyVj3mJCLDHf6goW'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    
 ALLOWED_HOSTS = []
 
 
@@ -100,6 +103,19 @@ WSGI_APPLICATION = 'RefAnimal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'postgres',
+#        'USER': 'postgres',
+#        'PASSWORD': 'password',
+#        'HOST': 'db_postgres',
+#        'PORT': '5432',
+#    }
+#}
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -110,6 +126,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
+
 
 
 # Password validation
@@ -157,9 +176,25 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 LOGIN_REDIRECT_URL = 'account'
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = 'Index'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = '/Users/Javier Barrios/Desktop/ranimal/RefAnimal/media'
 
+#email
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackEnd"
+#EMAIL_HOST = "smtp.gmail.com"
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'minuevomejoramigoguate@gmail.com'
+#EMAIL_HOST_PASSWORD ='Proyectos201801376'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'minuevomejoramigoguate@gmail.com'
+EMAIL_HOST_PASSWORD = 'Proyectos201801376'
+
+
+#CSRF_TRUSTED_ORIGINS = ['localhost:8000']

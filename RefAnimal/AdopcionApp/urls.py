@@ -10,6 +10,8 @@ urlpatterns = [
     path('adopcion/add/', adopcionCreateView.as_view(), name='adopcion_create'),
     path('adopcion/edit/<int:pk>/', adopcionUpdateView.as_view(), name='adopcion_update'),
     path('adopcion/delete/<int:pk>/', adopcionDeleteView.as_view(), name='adopcion_delete'),
+    path('adopcion/exitosa/', adopcionExitosaView.as_view(), name='adopcion_exitosa'),
+    path('adopcion/list_pdf/<int:pk>/', adopcionpdfView.as_view(), name='adopcion_pdf'),
   
 
 ]

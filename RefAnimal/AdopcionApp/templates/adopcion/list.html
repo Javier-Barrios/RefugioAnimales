@@ -3,6 +3,7 @@
 {% block columns %}
 
 <tr>
+    <th scope="col">Fecha de Solicitud</th>
     <th scope="col">Nombre</th>
     <th scope="col">Apellido</th>
     <th scope="col">Edad</th>
@@ -20,6 +21,7 @@
 {% block rows %}
 {% for c in object_list %}
 <tr>
+  <td> {{c.fecha_solicitud}}               </td>
   <td> {{c.nombre}}               </td>
   <td> {{c.apellido}}             </td>
   <td> {{c.edad}}                 </td>
@@ -29,8 +31,14 @@
   <td> {{c.mascota}}    </td>
   <td> {{c.razon_para_adoptar}}   </td>
     <td>
+      {% if user.is_staff%}
     <a href="{% url 'AdopcionApp:adopcion_update' c.id %}" class="btn btn-primary btn-flat"><i class="fas fa-pen"></i>editar</a>  
     <a href="{% url 'AdopcionApp:adopcion_delete' c.id %}" class="btn btn-primary btn-flat"><i class="fas fa-trash"></i>eliminar</a>  
+     {% endif %} 
+
+    {% if user.is_superuser%}
+    <a href="{% url 'AdopcionApp:adopcion_pdf' c.id %}" class="btn btn-primary btn-flat"><i class="fas fa-file-pdf"></i>Generar PDF</a>
+    {% endif %}  
     </td>
 
 </tr>

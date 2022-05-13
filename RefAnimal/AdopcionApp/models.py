@@ -14,6 +14,7 @@ class adopcion(models.Model):
     domicilio = models.CharField(max_length=500, verbose_name='domicilio')
     mascota = models.CharField(max_length=150, verbose_name='mascota')
     razon_para_adoptar = models.CharField(max_length=100000, verbose_name='razon_para_adoptar')
+    fecha_solicitud = models.DateField(default=datetime.now, verbose_name='fecha_solicitud')
 
     def __str__(self):
         return self.nombre

@@ -1,0 +1,269 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static 'lib/adminlte-3.0.4/plugins/font-awesome-5.11.1/css/all.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'lib/adminlte-3.0.4/css/adminlte.min.css' %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{% static 'lib/adminlte-3.0.4/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'lib/adminlte-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'lib/adminlte-3.0.4/js/adminlte.min.js' %}"></script>
+    <!-- Block Head -->
+
+    {% block head %}
+
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+
+
+    {% endblock %}
+</head>
+
+{% block body %}
+
+<body class="hold-transition layout-top-nav">
+    <div class="wrapper">
+        <!-- Header -->
+       <!-- Navbar -->
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <div class="container">
+        <a href="#" class="navbar-brand">
+            <img src="{% static 'img/huella.png' %}" alt="AdminLTE Logo"
+                 class="brand-image"
+                 style="opacity: .8">
+                 <a href="{% url 'account' %}" class="nav-link"><i class="fas fa-home"></i> Mi nuevo mejor Amigo</a>
+        </a>
+        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{% url 'account' %}" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       class="nav-link dropdown-toggle"><i class="fas fa-folder-open"></i> Mantenimientos</a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                        <li><a href="#" class="dropdown-item"><i class="fas fa-truck-loading"></i> Categorías</a></li>
+                        <li><a href="#" class="dropdown-item"><i class="fas fa-boxes"></i> Productos</a></li>
+                        <li><a href="#" class="dropdown-item"><i class="fas fa-users"></i> Clientes</a></li>
+                        <li><a href="#" class="dropdown-item"><i class="fas fa-shopping-cart"></i> Ventas</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+        <!-- Content -->
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark"> Bienvenido <small>Mi nuevo mejor Amigo</small></h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container">
+                    {% block content %}
+
+
+                        {{ title }}
+                        </h3>
+                        </div>
+                        
+                        <div class="card-body">
+                        
+                            <table class="table" id="data">
+
+
+                                <!-- <script>
+                                    {% if messages %}
+                                        var html = '<p>';
+                                        {% for message in messages %}
+                                            html += '{{ message }}<br>';
+                                        {% endfor %}
+                                        html += '</p>';
+                                        Swal.fire({
+                                            title: 'Listo!',
+                                            html: html,
+                                            icon: 'success'
+                                        });
+                                    {% endif %}
+                                </script>
+
+
+                                <tbody>
+                    
+                                    {% block rows %}
+
+                                    {% for c in informacion %}
+                                        {% if c.id == user.id %}
+                                            <table class="table"> -->
+
+
+
+
+
+
+
+
+                                                <tbody>
+                                                    <td>
+                                                        <tr>
+											<td><h4 class="product-nombres">Nombre completo: {{c.first_name}} {{c.last_name}}</a></h4></td>											
+										</tr>
+										<tr>
+										<td>	<h4 class="product-username">Para continuar registra tus datos biometricos pulsando el siguiente boton</a></h4>  </td>
+										</tr>
+								
+										</tr>	
+                                                    </td>
+                                                                                                        
+                                                </tbody>
+                                                </table>
+                                     {% endif %}
+                                    {% endfor %}
+
+
+
+                                    <div class="col-md-4">
+                                        <button type="button"  data-toggle="modal" data-target="#myModal">Registrar Rostro</button>
+                                        </button>
+                                    </div>
+                        
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Ingrese su identificación única (descrita a continuación) y espere a la cámara web </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li> Para mayor precisión, asegúrese de permanecer en una habitación con buena iluminación. </li>
+                                            <li> Quite cualquier tipo de accesorio de la cara. </li>
+                                            <li> Asegúrate de que tu cara esté claramente visible en la cámara. </li>
+                                            <li> Asegúrese de que su cabello no bloquee la cara. </li>
+                                            <li> Asegúrese de que no haya otras caras dentro del marco de la cámara. 
+                                        </ul>
+                                        <hr/>
+                                        <form action="/crear/" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="inputId">Ingrese su ID único de usuario, su ID es: {{user.id}} </label>
+                                            <input type="text" class="form-control" name="userId" id="inputId" placeholder="Enter Id">
+                                        </div>
+                                        <button type="submit" class="btn btn-warning">Enviar</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                    {% endblock %}
+                    
+                               
+                                  
+                    
+                    
+                                </tbody>
+                              </table>
+                    
+                    
+                    
+                        </div>
+                        </div>
+
+                        </div>
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+
+        <!-- Main Footer -->
+<footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+        Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2022 <a href="https://adminlte.io">Refugio Mascotas</a>.</strong> All rights reserved.
+</footer>
+
+    </div>
+    <!-- Block java -->
+{% block javascript  %}
+
+<script type="application/javascript">
+
+    $(document).ready(function() {
+        $('#data').DataTable({ 
+            responsive: true,
+            autoWidth: false
+    
+         });
+    } );
+    
+    </script>
+
+   
+{% endblock %}
+    </body>
+
+{% endblock %}
+</html>

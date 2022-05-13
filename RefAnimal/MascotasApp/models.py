@@ -31,11 +31,28 @@ class Type2(models.Model):
         db_table='type2'
         ordering=['id']
 
+
+
+class adoptado(models.Model):
+
+    nombre = models.CharField(max_length=20, verbose_name='nombre')
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name='Tipo'
+        verbose_name_plural='Tipos'
+        db_table='adoptado'
+        ordering=['id']
+
+
+
 class mascota(models.Model):
 
     Type2 = models.ForeignKey(Type2, on_delete=models.CASCADE)
+    adoptado = models.ForeignKey(adoptado, on_delete=models.CASCADE)
     
-    id_mascota = models.CharField(max_length=50000, unique=True, verbose_name='id_mascota')
     nombre = models.CharField(max_length=150, unique=True, verbose_name='nombre')
     sexo = models.ForeignKey(sexo, on_delete=models.CASCADE)
     edad= models.PositiveIntegerField(default=0)
@@ -44,9 +61,11 @@ class mascota(models.Model):
     foto= models.ImageField(upload_to='fotomascota/%Y/%M/%D', null=True, blank=True)
     foto2= models.ImageField(upload_to='fotomascota/%Y/%M/%D', null=True, blank=True)
     foto3= models.ImageField(upload_to='fotomascota/%Y/%M/%D', null=True, blank=True)
-    #vacunas
-    descripcion = models.CharField(max_length=50000, unique=True, verbose_name='descripcion')
+    vacunas = models.CharField(max_length=20, verbose_name='vacuna')
+    raza = models.CharField(max_length=20, verbose_name='raza')
     enfermedad = models.CharField(max_length=150, verbose_name='enfermedad')
+    alimentacion = models.CharField(max_length=150, verbose_name='alimentacion')
+    descripcion = models.CharField(max_length=150, unique=True, verbose_name='descripcion')
     
     
 

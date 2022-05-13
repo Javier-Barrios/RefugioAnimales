@@ -1,6 +1,6 @@
 from re import template
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from matplotlib.style import context
 
 from UsuariosApp.models import Usuario

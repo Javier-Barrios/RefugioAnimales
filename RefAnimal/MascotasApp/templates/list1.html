@@ -41,7 +41,7 @@
 
                 {% for c in mascotas %}
                 <tr>
-                    <td> {{c.id_mascota}}           </td>
+                    <td> {{c.id}}           </td>
                     <td> {{c.nombre}                </td>
                     <td> {{c.sexo}}                 </td>
                     <td> {{c.edad}}                 </td>
@@ -73,12 +73,14 @@
 
     </div>
     </div>
+    {% if user.is_staff%}
     <div class="card-footer"> 
         <button class="btn btn-primary btn-flat">
             
             <a href="{% url 'MascotasApp:mascota_create'%}" class="btn btn-primary btn-flat"><i class="fas fa-plus"></i>Nueva mascota</a>  
         </button>  
     </div>
+    {% endif %} 
     </div>
 {% endblock %}
 

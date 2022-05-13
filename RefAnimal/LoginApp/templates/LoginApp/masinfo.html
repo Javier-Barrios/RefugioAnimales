@@ -89,7 +89,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Portfoio Details</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{% url 'account' %} ">Home</a></li>
             <li>Portfoio Details</li>
           </ol>
         </div>
@@ -133,10 +133,15 @@
             <div class="portfolio-info">
               <h3>Información</h3>
               <ul>
+                <li><strong>Estado</strong>: {{ pet.adoptado}}</li>
                 <li><strong>Nombre</strong>: {{ pet.nombre }}</li>
+                <li><strong>Raza</strong>: {{ pet.raza}}</li>
                 <li><strong>Edad</strong>: {{ pet.edad }} años</li>
                 <li><strong>Sexo</strong>: {{ pet.sexo }}</li>
+                <li><strong>Alimentacion</strong>:  {{ pet.alimentacion}}</li>
+                <li><strong>Vacunas</strong>:  {{ pet.vacunas}}</li>
                 <li><strong>Enfermedades</strong>:  {{ pet.enfermedad }}</li>
+                <li><strong>Rescate</strong>:  {{ pet.fecha_rescate }}</li>
 
 
                 {% if user.is_authenticated%}
